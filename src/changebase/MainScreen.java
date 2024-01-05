@@ -22,8 +22,9 @@ public class MainScreen {
         int baseOutput = scr.chooseOutputBase();
         //Step3: Enter input
         String inputNumber = scr.enterInputNumber(baseInput);
+        System.out.println("input: "+ inputNumber);
         //Step4: Show output number
-        scr.outputvalue(baseInput, baseOutput, inputNumber);
+        scr.outputValue(baseInput, baseOutput, inputNumber);
         
     }
 

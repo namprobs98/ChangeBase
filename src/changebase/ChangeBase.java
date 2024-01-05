@@ -21,15 +21,14 @@ public class ChangeBase {
         } else if (inputBase == 1 && outputBase == 3) {
             outputNumber = changeBinToHex(inputNumber);
         } else if (inputBase == 2 && outputBase == 1) {
-            outputNumber = changeBinToDec(inputNumber);
+            outputNumber = changeDecToBin(inputNumber);
         } else if (inputBase == 2 && outputBase == 3) {
-            outputNumber = changeBinToDec(inputNumber);
+            outputNumber = changeDecToHex(inputNumber);
         } else if (inputBase == 3 && outputBase == 1) {
-            outputNumber = changeBinToDec(inputNumber);
+            outputNumber = changeHexToBin(inputNumber);
         } else if (inputBase == 3 && outputBase == 2) {
-            outputNumber = changeBinToDec(inputNumber);
+            outputNumber = changeHexToDec(inputNumber);
         }
-        outputNumber = changeHexToDec(inputNumber);
         return outputNumber;
     }
 
@@ -43,55 +42,43 @@ public class ChangeBase {
         return outputNumber + "";
     }
 
-    public static String changeBinToHex(String inputNumber) {
+    public String changeBinToHex(String inputNumber) {
         String changeInput = inputNumber;
-        String outputNumber = null;
+        String outputNumber = "";
         while (changeInput.length() % 4 != 0) {
             // Đảm bảo độ dài của chuỗi nhị phân là bội số của 4
             changeInput = "0" + changeInput;
         }
-        System.out.println("output change: "+ changeInput);
         char[] arrayNumber = changeInput.toCharArray();
-        System.out.println("length arr: "+arrayNumber.length);
-        for (int index = 0; index +4 < arrayNumber.length ; index+=4) {
+        for (int index = 0; index + 4 <= arrayNumber.length; index += 4) {
             int binToNumber = 0;
-            System.out.println("binToNumber = "+ binToNumber);
-            System.out.println("index = "+index);
             for (int secondIndex = index; secondIndex < index + 4; secondIndex++) {
-                System.out.println("2index = " + secondIndex);
                 int numberParseInt = Character.getNumericValue(arrayNumber[secondIndex]);
                 binToNumber += numberParseInt * Math.pow(2, index + 3 - secondIndex);
             }
-            
-            if (binToNumber<10) {
-                    outputNumber = binToNumber + outputNumber;
-            }
-            else if(binToNumber == 10){
-                    outputNumber = "A" + outputNumber;
-            }
-            else if(binToNumber == 11){
-                    outputNumber = "B" + outputNumber;
-            }
-            else if(binToNumber == 12){
-                    outputNumber = "C" + outputNumber;
-            }
-            else if(binToNumber == 13){
-                    outputNumber = "D" + outputNumber;
-            }
-            else if(binToNumber == 14){
-                    outputNumber = "E" + outputNumber;
-            }
-            else if(binToNumber == 15){
-                    outputNumber = "F" + outputNumber;
+
+            if (binToNumber < 10) {
+                outputNumber = outputNumber + binToNumber;
+            } else if (binToNumber == 10) {
+                outputNumber = outputNumber + "A";
+            } else if (binToNumber == 11) {
+                outputNumber = outputNumber + "B";
+            } else if (binToNumber == 12) {
+                outputNumber = outputNumber + "C";
+            } else if (binToNumber == 13) {
+                outputNumber = outputNumber + "D";
+            } else if (binToNumber == 14) {
+                outputNumber = outputNumber + "E";
+            } else if (binToNumber == 15) {
+                outputNumber = outputNumber + "F";
             }
         }
-        
         return outputNumber;
     }
-    public static void main(String[] args) {
-        System.out.println("output:  "+ changeBinToHex("11001"));
-    }
 
+//    public static void main(String[] args) {
+//        System.out.println("output:  " + changeBinToHex("1001"));
+//    }
     public String changeDecToBin(String inputNumber) {
         return "";
     }

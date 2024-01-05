@@ -110,7 +110,7 @@ public class Screen {
         return inputNumber;
     }
 
-    public void outputvalue(int inputBase, int outputBase, String inputValue) {
+    public void outputValue(int inputBase, int outputBase, String inputValue) {
         ChangeBase change = new ChangeBase();
         String outputNumber = change.changeBase(inputBase, outputBase, inputValue);
         System.out.println("output: " + outputNumber);
