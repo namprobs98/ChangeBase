@@ -80,15 +80,50 @@ public class ChangeBase {
 //        System.out.println("output:  " + changeBinToHex("1001"));
 //    }
     public String changeDecToBin(String inputNumber) {
-        return "";
+        int inputInt = Integer.parseInt(inputNumber);
+        String outputNumber = "";
+        while (inputInt != 0) {
+            outputNumber =inputInt%2 + outputNumber;
+            inputInt /= 2;
+        }
+        return outputNumber;
     }
 
     public String changeDecToHex(String inputNumber) {
-        return "";
+        int inputInt = Integer.parseInt(inputNumber);
+        String outputNumber = "";
+        while (inputInt != 0) {
+            int surplus = inputInt%16;
+            if(surplus <=9){
+                outputNumber = surplus+ outputNumber;
+            }
+            else if(surplus ==10 ){
+                outputNumber = "A"+ outputNumber;
+            }
+            else if(surplus ==11 ){
+                outputNumber = "B"+ outputNumber;
+            }
+            else if(surplus ==12 ){
+                outputNumber = "C"+ outputNumber;
+            }
+            else if(surplus ==13 ){
+                outputNumber = "D"+ outputNumber;
+            }
+            else if(surplus ==14 ){
+                outputNumber = "E"+ outputNumber;
+            }
+            else if(surplus ==15 ){
+                outputNumber = "F"+ outputNumber;
+            }
+            
+            inputInt /= 16;
+        }
+        return outputNumber;
     }
 
     public String changeHexToBin(String inputNumber) {
-        return "";
+        String outputNumber = changeDecToBin(changeHexToDec(inputNumber));
+        return outputNumber;
     }
 
     public String changeHexToDec(String inputNumber) {
